@@ -3,12 +3,14 @@ package atm.entities;
 public class Card {
 
     private String cardNumber;
+    private String BIN;
     private String cardHolderName;
     private String expiryDate;
     private String cvv;
 
-    public Card(String cardNumber, String cardHolderName, String expiryDate, String cvv) {
+    public Card(String cardNumber, String BIN, String cardHolderName, String expiryDate, String cvv) {
         this.cardNumber = cardNumber;
+        this.BIN = BIN;
         this.cardHolderName = cardHolderName;
         this.expiryDate = expiryDate;
         this.cvv = cvv;
@@ -46,14 +48,28 @@ public class Card {
         this.cvv = cvv;
     }
 
+    public String getBIN() {
+        return BIN;
+    }
+
+    public void setBIN(String BIN) {
+        this.BIN = BIN;
+    }
+
     public static class Builder {
         private String cardNumber;
         private String cardHolderName;
         private String expiryDate;
         private String cvv;
+        private String BIN;
 
         public Builder setCardNumber(String cardNumber) {
             this.cardNumber = cardNumber;
+            return this;
+        }
+
+        public Builder setBIN(String BIN) {
+            this.BIN = BIN;
             return this;
         }
 
@@ -73,7 +89,7 @@ public class Card {
         }
 
         public Card build() {
-            return new Card(cardNumber, cardHolderName, expiryDate, cvv);
+            return new Card(cardNumber, BIN, cardHolderName, expiryDate, cvv);
         }
     }
 
